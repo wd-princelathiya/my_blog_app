@@ -10,5 +10,8 @@ class PostModel(models.Model):
     author = models.ForeignKey(User , on_delete=CASCADE)  #user ID 
     date_created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-date_created' , ]    #to order latest post at top
+
     def __str__(self):
         return self.title

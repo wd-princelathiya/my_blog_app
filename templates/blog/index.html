@@ -8,57 +8,33 @@
         <div class="col-md-4">
             <div class="card shadow my-3">
                 <div class="card-body">
-                    <h3>FORM</h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" class="btn btn-primary" value="POST">
+                    </form>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
+            {% for post in posts %}
             <div class="card shadow my-3">
+                
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <img src="path-to-image.jpg" alt="img" class="img-fluid">
                         </div>
                         <div class="col-md-8">
-                            <small>20th June 2021</small>
+                            <small>{{post.date_created}}</small>
                             <hr>
-                            <a class="h3" href="#">First Post</a>
-                            <p class="text-justify  my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam veniam ad ab nesciunt dolore eos velit aperiam, quos vero sed quam, rerum consectetur. Tempore doloremque numquam laborum dolorem quibusdam cum?</p>
+                            <a class="h3" href="#">{{post.title}}</a>
+                            <p class="text-justify  my-3">{{post.content}}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card shadow my-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="path-to-image.jpg" alt="img" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <small>20th June 2021</small>
-                            <hr>
-                            <a class="h3" href="#">First Post</a>
-                            <p class="txt-justify  my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam veniam ad ab nesciunt dolore eos velit aperiam, quos vero sed quam, rerum consectetur. Tempore doloremque numquam laborum dolorem quibusdam cum?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card shadow my-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="path-to-image.jpg" alt="img" class="img-fluid">
-                        </div>
-                        <div class="col-md-8">
-                            <small>20th June 2021</small>
-                            <hr>
-                            <a class="h3" href="#">First Post</a>
-                            <p class="text-justify  my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam veniam ad ab nesciunt dolore eos velit aperiam, quos vero sed quam, rerum consectetur. Tempore doloremque numquam laborum dolorem quibusdam cum?</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            {% endfor %}
     </div>   
 </div>
 
