@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from django.http import HttpResponse
 from .models import PostModel
 from .forms import PostModelForm
@@ -13,6 +13,7 @@ def index(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
+            return redirect('Home-page')
 
     else:
         form = PostModelForm()
